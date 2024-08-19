@@ -4,9 +4,27 @@ import loginIcons from "../assest/signin.gif";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section id="login">
       <div className="mx-auto container p-4">
@@ -15,7 +33,7 @@ const Login = () => {
             <img src={loginIcons} alt="login icons" />
           </div>
 
-          <form className="pt-6 flex flex-col gap-2">
+          <form className="pt-6 flex flex-col gap-2" onSubmit={handleSubmit}>
             <div className="grid">
               <label>Email : </label>
               <div className="bg-slate-100 p-2">
@@ -23,6 +41,8 @@ const Login = () => {
                   type="email"
                   placeholder="enter email"
                   name="email"
+                  value={data.email}
+                  onChange={handleOnChange}
                   className="w-full h-full outline-none bg-transparent"
                 />
               </div>
@@ -34,14 +54,22 @@ const Login = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="enter password"
+                  value={data.password}
                   name="password"
+                  onChange={handleOnChange}
                   className="w-full h-full outline-none bg-transparent"
                 />
-                <div className="cursor-pointer text-xl" onClick={()=>setShowPassword((preve)=>!preve)}>
+                <div
+                  className="cursor-pointer text-xl"
+                  onClick={() => setShowPassword((preve) => !preve)}
+                >
                   <span>{showPassword ? <FaEye /> : <FaEyeSlash />}</span>
                 </div>
               </div>
-              <Link className="block w-fit ml-auto hover:underline hover:text-red-600">
+              <Link
+                to={"/forgot-password"}
+                className="block w-fit ml-auto hover:underline hover:text-red-600"
+              >
                 Forgot password ?
               </Link>
             </div>
@@ -54,7 +82,7 @@ const Login = () => {
           <p className="my-5">
             Don't have account ?{" "}
             <Link
-              to={"/sign-up"}
+              to={"/signup"}
               className=" text-red-600 hover:text-red-700 hover:underline"
             >
               Sign up
