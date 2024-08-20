@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import loginIcons from "../assest/signin.gif";
-import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import imageTobase64 from "../helper.js/imageTobase64";
+import SummaryApi from "../common";
+import {toast} from "react-toastify";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +17,7 @@ const SignUp = () => {
     confirmPassword: "",
     profilePic: "",
   });
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +32,7 @@ const SignUp = () => {
 
   const handleUploadPic = async (e) => {
     const file = e.target.files[0];
+
     const imagePic = await imageTobase64(file);
 
     setData((preve) => {
@@ -41,6 +45,29 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (data.password === data.confirmPassword) {
+      const dataResponse = await fetch(SummaryApi.signUP.url, {
+        method: SummaryApi.signUP.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const dataApi = await dataResponse.json();
+
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/login");
+      }
+
+      if (dataApi.error) {
+        toast.error(dataApi.message);
+      }
+    } else {
+      toast.error("Please check password and confirm password");
+    }
   };
 
   return (
@@ -70,12 +97,12 @@ const SignUp = () => {
               <label>Name : </label>
               <div className="bg-slate-100 p-2">
                 <input
-                  type="name"
+                  type="text"
                   placeholder="enter your name"
                   name="name"
                   value={data.name}
-                  required
                   onChange={handleOnChange}
+                  required
                   className="w-full h-full outline-none bg-transparent"
                 />
               </div>
@@ -88,12 +115,13 @@ const SignUp = () => {
                   placeholder="enter email"
                   name="email"
                   value={data.email}
-                  required
                   onChange={handleOnChange}
+                  required
                   className="w-full h-full outline-none bg-transparent"
                 />
               </div>
             </div>
+
             <div>
               <label>Password : </label>
               <div className="bg-slate-100 p-2 flex">
@@ -102,8 +130,8 @@ const SignUp = () => {
                   placeholder="enter password"
                   value={data.password}
                   name="password"
-                  required
                   onChange={handleOnChange}
+                  required
                   className="w-full h-full outline-none bg-transparent"
                 />
                 <div
@@ -114,6 +142,7 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
+
             <div>
               <label>Confirm Password : </label>
               <div className="bg-slate-100 p-2 flex">
