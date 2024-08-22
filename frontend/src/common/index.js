@@ -37,18 +37,18 @@ const SummaryApi = {
         url : `${backendDomin}/api/update-product`,
         method  : 'post'
     },
-    // categoryProduct : {
-    //     url : `${backendDomin}/api/get-categoryProduct`,
-    //     method : 'get'
-    // },
-    // categoryWiseProduct : {
-    //     url : `${backendDomin}/api/category-product`,
-    //     method : 'post'
-    // },
-    // productDetails : {
-    //     url : `${backendDomin}/api/product-details`,
-    //     method : 'post'
-    // },
+    categoryProduct : {
+        url : `${backendDomin}/api/get-categoryProduct`,
+        method : 'get'
+    },
+    categoryWiseProduct : {
+        url : `${backendDomin}/api/category-product`,
+        method : 'post'
+    },
+    productDetails : {
+        url : `${backendDomin}/api/product-details`,
+        method : 'post'
+    },
     // addToCartProduct : {
     //     url : `${backendDomin}/api/addtocart`,
     //     method : 'post'
