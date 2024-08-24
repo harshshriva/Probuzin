@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import fetchCategoryWiseProduct from '../helper.js/fetchCategoryWiseProduct'
 import displayINRCurrency from '../helper.js/displayCurrency'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import addToCart from '../helper.js/addToCart'
 import Context from '../context'
@@ -27,7 +26,6 @@ const CategroyWiseProductDisplay = ({category, heading}) => {
         const categoryProduct = await fetchCategoryWiseProduct(category)
         setLoading(false)
 
-        console.log("horizontal data",categoryProduct.data)
         setData(categoryProduct?.data)
     }
 
