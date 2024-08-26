@@ -1,12 +1,12 @@
-const userModel = require("../../models/userModel")
+const orderUserModel = require("../../models/allOrder")
 
-async function allUsers(req,res){
+async function allOrderUser(req,res){
     try{
-        const allUsers = await userModel.find()
+        const allOrder = await orderUserModel.find()
         
         res.json({
             message : "All User",
-            data : allUsers,
+            data : allOrder,
             success : true,
             error : false
         })
@@ -19,4 +19,4 @@ async function allUsers(req,res){
     }
 }
 
-module.exports = allUsers
+module.exports = allOrderUser

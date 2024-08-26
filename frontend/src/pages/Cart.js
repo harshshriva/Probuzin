@@ -163,7 +163,7 @@ const Cart = () => {
         {data.length === 0 && !loading && <p className="py-5">No Data</p>}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4 overflow-y-scroll">
+      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
         {/***view product */}
         <div className="w-full max-w-3xl">
           {loading
@@ -175,7 +175,7 @@ const Cart = () => {
                   ></div>
                 );
               })
-            : data.map((product, index) => {
+            : data?.map((product, index) => {
                 return (
                   <div
                     key={product?._id + "Add To Cart Loading"}
