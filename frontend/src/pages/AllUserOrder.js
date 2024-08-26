@@ -37,7 +37,7 @@ const AllUsersOrder = () => {
             <th>Sr.</th>
             <th>Name</th>
             <th>Phone</th>
-            <th>Product/quantity</th>
+            <th>Product/quantity/price</th>
             <th>Location</th>
             <th>Date</th>
           </tr>

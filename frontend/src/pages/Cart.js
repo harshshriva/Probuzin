@@ -260,7 +260,7 @@ const Cart = () => {
                     className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300 p-2 text-white w-full mt-2 rounded-b-lg"
                     onClick={() => setShowForm(true)}
                   >
-                    Click And Submit Your Details
+                    Submit Your Details
                   </button>
                 </div>
               )}
