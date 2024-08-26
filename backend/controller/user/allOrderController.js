@@ -19,7 +19,7 @@ async function allOrderController(req, res) {
       data: saveUser,
       success: true,
       error: false,
-      message: "Your Order Successfully Complete!",
+      message: "Your order has been successfull.",
     });
   } catch (err) {
     res.json({
