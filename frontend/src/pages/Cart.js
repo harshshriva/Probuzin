@@ -5,6 +5,9 @@ import displayINRCurrency from "../helper.js/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [data, setData] = useState([]);
@@ -159,8 +162,23 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="text-center text-lg my-3">
-        {data.length === 0 && !loading && <p className="py-5">No Data</p>}
+      <div className="my-5 flex justify-center">
+        {data.length === 0 && !loading && (
+          <div className="bg-white border border-gray-200 rounded-lg shadow-lg w-full sm:max-w-md p-4 sm:p-6 text-center">
+            <FontAwesomeIcon
+              icon={faExclamationCircle}
+              className="text-3xl sm:text-4xl text-red-500 mb-3 sm:mb-4"
+            />
+            <p className="text-lg sm:text-xl font-semibold text-gray-700">
+              Oops! No Data Found
+            </p>
+            <p className="text-gray-500 mt-2 text-sm sm:text-base">
+              <Link to={"/"} className="text-blue-500 hover:underline">
+                Please Add Your Product in Cart
+              </Link>
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">

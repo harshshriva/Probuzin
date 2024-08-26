@@ -40,7 +40,7 @@ const SearchProduct = () => {
                     </p>
                     {data.length === 0 ? (
                         <p className='bg-white text-lg text-center p-4'>
-                            No Data Found...
+                            No Data Found!
                         </p>
                     ) : (
                         <VerticalCard data={data} />
