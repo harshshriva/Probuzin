@@ -174,7 +174,7 @@ const Cart = () => {
             </p>
             <p className="text-gray-500 mt-2 text-sm sm:text-base">
               <Link to={"/"} className="text-blue-500 hover:underline">
-                Please Add Your Product in Cart
+                Please Add Your Product in Cart!
               </Link>
             </p>
           </div>
